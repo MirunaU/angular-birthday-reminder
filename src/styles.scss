@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+/* Dacă nu ai deja importul NgZorro, adaugă-l: */
+@import 'ng-zorro-antd/ng-zorro-antd.min.css';
+
+:root {
+  --pink-primary: #e8b4b8;
+  --pink-light: #f5d6d6;
+  --pink-dark: #c48b9f;
+  --background-color: #fdf6f6;
+  --text-color: #5c3a45;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Suprascrierea culorilor NgZorro pentru butoane și inputuri */
+.ant-btn-primary {
+  background-color: var(--pink-primary);
+  border-color: var(--pink-primary);
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  background-color: var(--pink-dark);
+  border-color: var(--pink-dark);
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--pink-primary);
+  border-color: var(--pink-primary);
+}
+.ant-input:focus, .ant-input-focused {
+  border-color: var(--pink-primary);
+  box-shadow: 0 0 0 2px rgba(232, 180, 184, 0.2);
+}

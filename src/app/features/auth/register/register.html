@@ -1,1 +1,56 @@
-<p>register works!</p>
+<div class="register-container">
+  <div class="register-card">
+    <h2 class="title">Creează un cont</h2>
+    <p class="subtitle">Înregistrează-te pentru a folosi aplicația</p>
+
+    <form nz-form [formGroup]="registerForm" (ngSubmit)="onSubmit()" nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="lastName">Nume</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu numele!">
+          <input nz-input formControlName="lastName" id="lastName" type="text" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="firstName">Prenume</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu prenumele!">
+          <input nz-input formControlName="firstName" id="firstName" type="text" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="email">Email</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu un email valid!">
+          <input nz-input formControlName="email" id="email" type="email" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="password">Parolă</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Minim 6 caractere, o literă mare, una mică, o cifră și un caracter special!">
+          <input nz-input formControlName="password" id="password" type="password" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="confirmPassword">Confirmare Parolă</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Parolele nu coincid!">
+          <input nz-input formControlName="confirmPassword" id="confirmPassword" type="password" />
+          <div *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.dirty" class="custom-error">
+            Parolele introduse nu coincid.
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control [nzSm]="24">
+          <button nz-button nzType="primary" nzBlock [disabled]="!registerForm.valid">Înregistrare</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+    <div class="login-link">
+      Ai deja cont? <a routerLink="/login">Loghează-te</a>
+    </div>
+  </div>
+</div>

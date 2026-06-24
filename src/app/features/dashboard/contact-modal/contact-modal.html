@@ -1,1 +1,47 @@
-<p>contact-modal works!</p>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="contactData ? 'Modifică prieten' : 'Adaugă prieten'"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzOkText="Salvează"
+  nzCancelText="Renunță">
+  
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="contactForm" nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="lastName">Nume</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Câmp obligatoriu!">
+          <input nz-input formControlName="lastName" id="lastName" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="firstName">Prenume</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Câmp obligatoriu!">
+          <input nz-input formControlName="firstName" id="firstName" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="phone">Telefon</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Număr de telefon invalid!">
+          <input nz-input formControlName="phone" id="phone" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="city">Oraș</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Câmp obligatoriu!">
+          <input nz-input formControlName="city" id="city" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="24" nzRequired nzFor="birthDate">Data Nașterii</nz-form-label>
+        <nz-form-control [nzSm]="24" nzErrorTip="Câmp obligatoriu!">
+          <nz-date-picker formControlName="birthDate" id="birthDate" nzFormat="dd.MM.yyyy" style="width: 100%"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

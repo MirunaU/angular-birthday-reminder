@@ -1,1 +1,50 @@
-<p>contact-list works!</p>
+<div class="dashboard-container">
+  <div class="header">
+    <h2 class="dashboard-title">Agenda: Birthday Reminder</h2>
+    <button nz-button nzType="default" nzDanger (click)="logout()">Delogare</button>
+  </div>
+
+  <div class="actions-bar">
+    <input nz-input
+           placeholder="Caută după nume sau oraș..."
+           [ngModel]="searchQuery()"
+           (ngModelChange)="onSearchChange($event)"
+           class="search-input" />
+
+    <button nz-button nzType="primary" (click)="openAddModal()">Adaugă Prieten Nou</button>
+  </div>
+
+  <nz-table #basicTable [nzData]="filteredContacts()" nzBordered>
+    <thead>
+      <tr>
+        <th [nzSortFn]="sortFnName">Nume</th>
+        <th [nzSortFn]="sortFnFirstName">Prenume</th>
+        <th>Telefon</th>
+        <th [nzSortFn]="sortFnCity">Oraș</th>
+        <th [nzSortFn]="sortFnBirthDate">Data Nașterii</th>
+        <th>Acțiuni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.lastName }}</td>
+        <td>{{ data.firstName }}</td>
+        <td>{{ data.phone }}</td>
+        <td>{{ data.city }}</td>
+        <td>{{ data.birthDate | date:'dd.MM.yyyy' }}</td>
+        <td>
+          <button nz-button nzType="link" (click)="openEditModal(data)">Editează</button>
+          <a nz-popconfirm nzPopconfirmTitle="Sigur vrei să ștergi acest prieten?" (nzOnConfirm)="deleteContact(data.id)">
+            <button nz-button nzType="link" nzDanger>Șterge</button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<app-contact-modal
+  [isVisible]="isModalVisible"
+  [contactData]="selectedContact"
+  (closeModal)="closeModal()">
+</app-contact-modal>

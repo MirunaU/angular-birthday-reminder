@@ -34,7 +34,7 @@ export class ContactModal implements OnChanges {
     this.contactForm = this.fb.group({
       lastName: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      phone: ['', [Validators.required, Validators.pattern('^07[0-9]{8}$')]],
       city: ['', [Validators.required]],
       birthDate: [null, [Validators.required]]
     });

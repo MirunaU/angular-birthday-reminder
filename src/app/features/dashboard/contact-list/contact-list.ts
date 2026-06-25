@@ -36,7 +36,7 @@ export class ContactListComponent {
   searchQuery = signal<string>('');
   isModalVisible = false;
   selectedContact: Contact | null = null;
-  loggedInUser = localStorage.getItem('loggedInEmail') || 'eve.holt@reqres.in';
+  loggedInUser = localStorage.getItem('loggedInEmail') || sessionStorage.getItem('loggedInEmail') || 'eve.holt@reqres.in';
 
   filteredContacts = computed(() => {
     const query = this.searchQuery().toLowerCase();
@@ -67,6 +67,7 @@ export class ContactListComponent {
   logout() {
     this.authService.logout();
     localStorage.removeItem('loggedInEmail');
+    sessionStorage.removeItem('loggedInEmail'); 
     this.router.navigate(['/login']);
   }
 

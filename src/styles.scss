@@ -36,23 +36,14 @@ body {
 }
 
 
-/* 1. Centrare text si iconite pe TOATE butoanele + Rotunjire */
+/* Resetare curată pentru butoane */
 .ant-btn {
   border-radius: 12px !important;
   display: inline-flex !important;
-  align-items: center !important;     /* Centrare verticala */
-  justify-content: center !important; /* Centrare orizontala */
-  text-align: center !important;
-  gap: 8px;
-  font-weight: 600;
-  line-height: 1 !important;
-}
-
-/* Fortam span-ul intern din NgZorro sa respecte centrarea */
-.ant-btn > span {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  padding: 0 20px !important; /* Resetează acel "padding mov" ca să fie egal stânga-dreapta */
 }
 
 /* 2. Rotunjire generala pentru input-uri, calendar si bara de search */

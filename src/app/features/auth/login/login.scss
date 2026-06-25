@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 .split-layout {
   display: flex;
   min-height: 100vh;
@@ -115,16 +116,18 @@
 }
 
 .animated-gradient-text {
-  font-size: 4rem;
-  font-weight: 900;
-  letter-spacing: -1px;
+  font-family: 'Dancing Script', cursive; 
+  font-size: 100rem; 
+  font-weight: 700;
+  letter-spacing: 2px;
   background: linear-gradient(270deg, #ffffff, #ffe4e6, #ffb6c1, #ffffff);
   background-size: 300% 300%;
   -webkit-background-clip: text;
+  background-clip: text; 
   -webkit-text-fill-color: transparent;
   animation: gradientShift 6s ease infinite;
-  margin-top: 20px;
-  text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); 
+  margin-top: 10px;
+  text-shadow: 2px 10px 15px rgba(0, 0, 0, 0.08);
 }
 
 @keyframes gradientShift {

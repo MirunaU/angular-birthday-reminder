@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -21,7 +21,7 @@ import { Contact, ContactService } from '../../../core/services/contact';
   templateUrl: './contact-modal.html',
   styleUrls: ['./contact-modal.scss']
 })
-export class ContactModal implements OnInit {
+export class ContactModal implements OnChanges {
   @Input() isVisible = false;
   @Input() contactData: Contact | null = null;
   @Output() closeModal = new EventEmitter<void>();
@@ -40,12 +40,16 @@ export class ContactModal implements OnInit {
     });
   }
 
-  ngOnInit() {
-    if (this.contactData) {
-      this.contactForm.patchValue({
-        ...this.contactData,
-        birthDate: new Date(this.contactData.birthDate)
-      });
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['contactData'] || changes['isVisible']) {
+      if (this.contactData) {
+        this.contactForm.patchValue({
+          ...this.contactData,
+          birthDate: new Date(this.contactData.birthDate)
+        });
+      } else {
+        this.contactForm.reset();
+      }
     }
   }
 
@@ -61,7 +65,6 @@ export class ContactModal implements OnInit {
       } else {
         this.contactService.addContact(formValue);
       }
-      this.contactForm.reset();
       this.closeModal.emit();
     } else {
       Object.values(this.contactForm.controls).forEach(control => {
@@ -74,7 +77,6 @@ export class ContactModal implements OnInit {
   }
 
   handleCancel() {
-    this.contactForm.reset();
     this.closeModal.emit();
   }
 }

@@ -148,3 +148,52 @@
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ===============================
+   STILIZARE REMINDER ZI DE NASTERE
+   =============================== */
+.birthday-reminder {
+  background: linear-gradient(135deg, #ffffff, #fdf6f6);
+  border: 1px solid rgba(232, 180, 184, 0.4);
+  border-radius: 20px;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 8px 20px rgba(232, 180, 184, 0.15);
+  animation: slideDownFade 0.6s ease-out;
+
+  .bell-icon {
+    font-size: 26px;
+    animation: ring 2.5s ease infinite;
+  }
+
+  .reminder-text {
+    flex: 1;
+    color: #5c3a45;
+    font-size: 1.1rem;
+
+    strong {
+      color: #c48b9f;
+      font-weight: 800;
+    }
+  }
+
+  .gift-icon {
+    font-size: 24px;
+    color: #e8b4b8;
+  }
+}
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0); }
+  10%, 30%, 50% { transform: rotate(-12deg); }
+  20%, 40% { transform: rotate(12deg); }
+  60% { transform: rotate(0); }
+}
+
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

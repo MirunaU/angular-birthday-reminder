@@ -16,6 +16,18 @@
     </div>
   </div>
 
+
+  <div class="birthday-reminder" *ngIf="upcomingBirthday() as reminder">
+    <span nz-icon nzType="bell" nzTheme="twotone" [nzTwotoneColor]="'#e8b4b8'" class="bell-icon"></span>
+    <div class="reminder-text">
+      Următoarea zi de naștere este a lui <strong>{{ reminder.contact.firstName }} {{ reminder.contact.lastName }}</strong> 
+      în <strong>{{ reminder.days === 0 ? 'ASTĂZI!' : reminder.days + ' zile' }}</strong> 
+      ({{ reminder.contact.birthDate | date:'dd.MM' }}).
+    </div>
+    <span nz-icon nzType="gift" class="gift-icon"></span>
+  </div>
+
+
   <div class="actions-bar">
     <nz-input-group [nzPrefix]="prefixSearch" class="search-input">
       <input nz-input placeholder="Caută după nume sau oraș..." [ngModel]="searchQuery()" (ngModelChange)="onSearchChange($event)" />

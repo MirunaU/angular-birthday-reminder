@@ -43,7 +43,12 @@ export class LoginComponent implements OnInit {
       
       this.authService.login({ email, password }, rememberMe).subscribe({
         next: () => {
-          localStorage.setItem('loggedInEmail', email);
+          // Salvam email-ul in acelasi loc cu token-ul
+          if (rememberMe) {
+            localStorage.setItem('loggedInEmail', email);
+          } else {
+            sessionStorage.setItem('loggedInEmail', email);
+          }
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {

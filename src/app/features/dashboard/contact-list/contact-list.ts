@@ -51,6 +51,36 @@ export class ContactListComponent {
     );
   });
 
+  upcomingBirthday = computed<{ contact: Contact, days: number } | null>(() => {
+    const contacts = this.contactService.contacts();
+    if (!contacts || contacts.length === 0) return null;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let closestContact: Contact | null = null;
+    let minDiff = Infinity;
+    let daysRemaining = 0;
+
+    contacts.forEach((c: Contact) => {
+      const bDate = new Date(c.birthDate);
+      let nextBday = new Date(today.getFullYear(), bDate.getMonth(), bDate.getDate());
+
+      if (nextBday.getTime() < today.getTime()) {
+        nextBday.setFullYear(today.getFullYear() + 1);
+      }
+
+      const diffTime = nextBday.getTime() - today.getTime();
+      if (diffTime < minDiff) {
+        minDiff = diffTime;
+        closestContact = c;
+        daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      }
+    });
+
+    return closestContact ? { contact: closestContact as Contact, days: daysRemaining } : null;
+  });
+
   sortFnName = (a: Contact, b: Contact) => a.lastName.localeCompare(b.lastName);
   sortFnFirstName = (a: Contact, b: Contact) => a.firstName.localeCompare(b.firstName);
   sortFnCity = (a: Contact, b: Contact) => a.city.localeCompare(b.city);

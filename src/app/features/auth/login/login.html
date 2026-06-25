@@ -1,40 +1,56 @@
-<div class="login-container">
-  <div class="login-card">
-    <h2 class="title">Bine ai venit!</h2>
-    <p class="subtitle">Loghează-te pentru a accesa Birthday Reminder</p>
+<div class="split-layout">
+  <div class="form-side">
+    <div class="login-card">
+      <h2 class="title">Bine ai venit!</h2>
+      <p class="subtitle">Loghează-te pentru a accesa Birthday Reminder</p>
 
-    <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()" nzLayout="vertical">
-      <nz-form-item>
-        <nz-form-label [nzSm]="24" nzRequired nzFor="email">Email</nz-form-label>
-        <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu un email valid!">
-          <input nz-input formControlName="email" id="email" type="email" placeholder="eve.holt@reqres.in" />
-        </nz-form-control>
-      </nz-form-item>
+      <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()" nzLayout="vertical">
+        <nz-form-item>
+          <nz-form-label [nzSm]="24" nzRequired nzFor="email">Email</nz-form-label>
+          <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu un email valid!">
+            <nz-input-group [nzPrefix]="prefixUser">
+              <input nz-input formControlName="email" id="email" type="email" placeholder="eve.holt@reqres.in" />
+            </nz-input-group>
+            <ng-template #prefixUser><span nz-icon nzType="user"></span></ng-template>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSm]="24" nzRequired nzFor="password">Parolă</nz-form-label>
-        <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu parola!">
-          <input nz-input formControlName="password" id="password" type="password" placeholder="Parola" />
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="24" nzRequired nzFor="password">Parolă</nz-form-label>
+          <nz-form-control [nzSm]="24" nzErrorTip="Te rog introdu parola!">
+            <nz-input-group [nzPrefix]="prefixLock">
+              <input nz-input formControlName="password" id="password" type="password" placeholder="Parola" />
+            </nz-input-group>
+            <ng-template #prefixLock><span nz-icon nzType="lock"></span></ng-template>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-control [nzSm]="24">
-          <label nz-checkbox formControlName="rememberMe">
-            <span>Remember me</span>
-          </label>
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSm]="24">
+            <label nz-checkbox formControlName="rememberMe">
+              <span>Remember me</span>
+            </label>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-control [nzSm]="24">
-          <button nz-button nzType="primary" nzBlock [disabled]="!loginForm.valid">Conectare</button>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
+        <nz-form-item>
+          <nz-form-control [nzSm]="24">
+            <button nz-button nzType="primary" nzBlock [disabled]="!loginForm.valid">Conectare</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
 
-    <div class="register-link">
-      Nu ai cont? <a routerLink="/register">Înregistrează-te</a>
+      <div class="register-link">
+        Nu ai cont? <a routerLink="/register">Înregistrează-te</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="image-side">
+    <div class="overlay">
+      <span nz-icon nzType="gift" class="floating-icon"></span>
+      <h1>Birthday Reminder</h1>
+      <p>Păstrează amintirile vii și nu uita niciodată o zi importantă!</p>
     </div>
   </div>
 </div>

@@ -1,43 +1,115 @@
-.login-container {
+.split-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.form-side {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
+  background-color: var(--background-color, #fdf6f6);
 }
 
 .login-card {
   background-color: #ffffff;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(196, 139, 159, 0.15);
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(232, 180, 184, 0.25);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
 .title {
-  color: var(--text-color);
+  color: var(--text-color, #5c3a45);
   text-align: center;
   margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 1.8rem;
 }
 
 .subtitle {
   color: #888;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .register-link {
   text-align: center;
-  margin-top: 16px;
+  margin-top: 20px;
   
   a {
-    color: var(--pink-dark);
+    color: var(--pink-dark, #c48b9f);
     font-weight: bold;
     text-decoration: none;
+    transition: color 0.3s ease;
     
     &:hover {
-      color: var(--pink-primary);
+      color: var(--pink-primary, #e8b4b8);
     }
   }
+}
+
+.image-side {
+  flex: 1;
+  background: url('https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+  position: relative;
+  display: none;
+  
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(232, 180, 184, 0.85) 0%, rgba(196, 139, 159, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  
+  h1 {
+    color: white;
+    font-size: 3.5rem;
+    margin-top: 24px;
+    font-weight: 800;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+  
+  p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 80%;
+  }
+}
+
+.floating-icon {
+  font-size: 90px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+::ng-deep .ant-btn-primary {
+  border-radius: 12px;
+  height: 40px;
+}
+::ng-deep .ant-input, ::ng-deep .ant-input-group-addon {
+  border-radius: 8px;
+  padding: 8px 12px;
 }

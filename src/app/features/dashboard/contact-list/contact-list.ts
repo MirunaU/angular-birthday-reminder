@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { ContactService, Contact } from '../../../core/services/contact';
 import { AuthService } from '../../../core/services/auth';
 import { Router } from '@angular/router';
+
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ContactModal } from '../contact-modal/contact-modal';
 
 @Component({
@@ -20,6 +22,7 @@ import { ContactModal } from '../contact-modal/contact-modal';
     NzButtonModule,
     NzInputModule,
     NzPopconfirmModule,
+    NzIconModule,
     ContactModal
   ],
   templateUrl: './contact-list.html',
@@ -33,6 +36,7 @@ export class ContactListComponent {
   searchQuery = signal<string>('');
   isModalVisible = false;
   selectedContact: Contact | null = null;
+  loggedInUser = localStorage.getItem('loggedInEmail') || 'eve.holt@reqres.in';
 
   filteredContacts = computed(() => {
     const query = this.searchQuery().toLowerCase();
@@ -62,6 +66,7 @@ export class ContactListComponent {
 
   logout() {
     this.authService.logout();
+    localStorage.removeItem('loggedInEmail');
     this.router.navigate(['/login']);
   }
 

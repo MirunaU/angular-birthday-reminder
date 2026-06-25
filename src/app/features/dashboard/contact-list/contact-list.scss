@@ -83,9 +83,9 @@
   margin-bottom: 24px;
 
   .search-input {
-    width: 350px;
-    ::ng-deep input { border-radius: 12px; height: 44px; }
-    ::ng-deep .ant-input-group-addon { border-radius: 12px; background: white; }
+    width: 500px; 
+    box-shadow: 0 4px 12px rgba(232, 180, 184, 0.15); 
+    border-radius: 12px;
   }
   
   .add-btn {

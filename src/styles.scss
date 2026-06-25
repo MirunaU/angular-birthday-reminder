@@ -34,3 +34,44 @@ body {
   border-color: var(--pink-primary);
   box-shadow: 0 0 0 2px rgba(232, 180, 184, 0.2);
 }
+
+
+/* 1. Centrare text si iconite pe TOATE butoanele + Rotunjire */
+.ant-btn {
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Spatiu frumos intre iconita si text */
+  font-weight: 600;
+}
+
+/* 2. Rotunjire generala pentru input-uri, calendar si bara de search */
+.ant-input, .ant-picker, .ant-input-group-addon {
+  border-radius: 12px !important;
+}
+
+/* Ajustare fina pentru input-urile care au iconite atasate (sa nu se strice colturile la imbinare) */
+.ant-input-group > .ant-input:first-child, .ant-input-group-addon:first-child {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.ant-input-group > .ant-input:last-child, .ant-input-group-addon:last-child {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* 3. Rotunjire eleganta pentru Fereastra Modala (Adauga Prieten) */
+.ant-modal-content {
+  border-radius: 24px !important;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(196, 139, 159, 0.25) !important;
+}
+.ant-modal-header {
+  border-bottom: none !important;
+  padding: 24px 24px 10px !important;
+}
+.ant-modal-footer {
+  border-top: none !important;
+  padding: 10px 24px 24px !important;
+}
